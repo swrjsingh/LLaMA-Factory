@@ -1,4 +1,13 @@
 {
+  "codealpaca-20K": {
+    "hf_hub_url": "sahil2801/CodeAlpaca-20K",
+    "columns": {
+      "prompt": "instruction",
+      "query": "instruction",
+      "response": "output",
+      "history": null
+    }
+  },
   "identity": {
     "file_name": "identity.json"
   },

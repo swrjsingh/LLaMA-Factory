@@ -1,0 +1,37 @@
+```
+python run_with_detailed_eval.py train \
+    --stage sft \
+    --do_train True \
+    --model_name_or_path Qwen/Qwen2.5-7B-Instruct \
+    --preprocessing_num_workers 16 \
+    --finetuning_type lora \
+    --template qwen \
+    --flash_attn auto \
+    --dataset_dir /root/LLaMA-Factory/data \
+    --dataset codealpaca-20K \
+    --cutoff_len 2048 \
+    --learning_rate 3e-5 \
+    --num_train_epochs 3.0 \
+    --max_samples 100000 \
+    --per_device_train_batch_size 6 \
+    --per_device_eval_batch_size 8 \
+    --gradient_accumulation_steps 1 \
+    --lr_scheduler_type linear \
+    --max_grad_norm 0.3 \
+    --logging_steps 1 \
+    --save_steps 20 \
+    --eval_steps 20 \
+    --warmup_ratio 0.1 \
+    --packing True \
+    --output_dir saves/Qwen2.5-7B-Instruct/lora/train_codealpaca \
+    --bf16 True \
+    --plot_loss True \
+    --trust_remote_code True \
+    --ddp_timeout 180000000 \
+    --include_num_input_tokens_seen True \
+    --optim adamw_torch \
+    --lora_rank 16 \
+    --lora_alpha 16 \
+    --lora_dropout 0 \
+    --lora_target q_proj,k_proj,v_proj,o_proj,gate_proj,up_proj,down_proj |& tee training_log.txt
+```
